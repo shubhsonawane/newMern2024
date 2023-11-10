@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const authControllers = require("../controllers/auth-controller");
 
-router.route("/").get((req, res) => {
-    res.status(200).send('hello world')
-});
+router.route("/").get(authControllers.home);
+router.route("/register").get(authControllers.register);
 
 module.exports = router;
