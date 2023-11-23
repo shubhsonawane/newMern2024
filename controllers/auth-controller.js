@@ -1,5 +1,5 @@
 const User = require("../models/user-model");
-const bcrypt = require("bcryptjs");
+// const bcrypt = require("bcryptjs");
 const home = async (req, res) => {
   try {
     res.status(200).send("hello world");
@@ -36,7 +36,7 @@ const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid Credentials" });
     }
 
-    const user = await bcrypt.compare(password, userExists.password);
+    const user = await userExists.comparePassword(password);
 
     if (user) {
       res.status(200).json({
